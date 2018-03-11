@@ -2,7 +2,7 @@
 
 $count = 0 ;
 
-function translation($oldString, &$count) : string {
+function task($oldString, &$count) {
 
     function gen($oldString, &$count)  {
 
@@ -35,8 +35,9 @@ function translation($oldString, &$count) : string {
     }
 
     $newString = "";
-    foreach (gen($oldString, $count) as $i) {         //составляем новую строку из символов
-        $newString = $newString . $i;
+    $generator = gen($oldString, $count);
+    foreach ($generator as $symbol) {         //составляем новую строку из символов
+        $newString = $newString . $symbol;
     }
     return $newString;
 
@@ -47,6 +48,7 @@ if (isset($_POST['text'])) {
     $input = $_POST['text'];
 }
 
-echo "Новая строка: " . translation($input, $count);
-echo "<br/> Число замен: ";
-var_export($count);
+echo "Старая строка: " . $input;
+echo "<br/> Новая строка: " . task($input, $count);
+echo "<br/> Число замен: " . $count;
+//var_export($count);
