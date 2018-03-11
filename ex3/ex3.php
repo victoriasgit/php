@@ -10,6 +10,7 @@ function explodeStrings($strings)
     foreach ($array_of_strings as $string) {                                    //разбиваем строку на слова
         array_push($array_of_words, explode(' ', $string));
     }
+
     return $array_of_words;    //получаем текст из предложений, которые состоят из слов
 }
 
@@ -19,10 +20,11 @@ function createNewStrings(&$array_of_words)
     for ($i = 0; $i < $number_of_strings; $i++) {
         array_push($array_of_words, $array_of_words[$i]);
         shuffle($array_of_words[$i]);                        //добавляем по 1 новой строке, перемешав в ней слова
+
     }
 }
 
-function sortBySecondWord($array_of_strings)           //сортурием по второму слову
+function sortBySecondWord($array_of_strings)           //сортируем по второму слову
 {
     function cmp($str1, $str2)
     {
@@ -45,11 +47,10 @@ function array_print($new_array)                //выводим результ�
 
 $input = "";
 if (isset($_POST['text'])) {
-    $input = $_POST['text'];
+    $input = explodeStrings($_POST['text']);
+    createNewStrings($input);
+    $output = sortBySecondWord($input);
+    array_print($output);
 }
 
-$input = explodeStrings($_REQUEST['text']);
-createNewStrings($input);
-$output = sortBySecondWord($input);
-array_print($output);
 
