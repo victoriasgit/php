@@ -1,7 +1,5 @@
 <?php
 
-ini_set('display_errors',1);
-
 $result = "";
 $array = [];
 $current = 0;
@@ -42,7 +40,7 @@ for ($i = 0; $i < strlen($code); $i++) {
             break;
         case '>':                                   //перейти к следующей ячейке
             $current++;
-            if (!isset($array[$current])) {     
+            if (!isset($array[$current])) {
                 $array[$current] = 0;
             }
             break;
