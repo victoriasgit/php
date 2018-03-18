@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex1</title>
+</head>
+<body>
+
+<?php if (isset($_POST['go'])):?>
+<?php else:?>
+<form action="ex1.php" method="POST">
+    <label for="code">
+        Введите код:
+    </label>
+    <input type="text" id="code" name="code" value=""><br/>
+    <label for="param">
+        Введите параметры:
+    </label>
+    <input type="text" id="param" name="param" value=""><br/>
+    <input type="submit" name="go" value="Отправить">
+</form>
+<?php endif?>
+</body>
+</html>
