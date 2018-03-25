@@ -16,23 +16,19 @@ if (isset($_POST['code']) and isset($_POST['param'])) {
 for ($i = 0; $i < strlen($code); $i++) {
     switch ($code[$i]) {
         case '+':                            //увеличить значение в текущей ячейке на 1
-            if ($array[$current] == 255) {
-                $array[$current] = 0;
-            }
-            else {
-                $array[$current]++;
-            }
+            if (isset($array[$current]))
+                $array[$current] = $array[$current] == 255 ? 0 : $array[$current] + 1;
+            else
+                $array[$current] = 1;
             break;
         case '-':                            //уменьшить значение текущей ячейки на 1
-            if ($array[$current] == 0) {
-                $array[$current] = 255;
-            }
-            else {
-                $array[$current]--;
-            }
+            if (isset($array[$current]))
+                $array[$current] = $array[$current] == 0 ? 255 : $array[$current] - 1;
+            else
+                $array[$current] = 0;
             break;
         case '.':                                //напечатать значение из текущей ячейки
-            $result .= chr($array[$current]);         //chr - ascii-символ по коду
+            $result .= chr(isset($array[$current]) ? $array[$current] : 0); //chr - ascii-символ по коду
             break;
         case ',':                                          //ввести извне значение и сохранить в текущей ячейке
             $array[$current] = ord($param[$param_pointer]);         //ord - ascii-код символа
@@ -51,7 +47,7 @@ for ($i = 0; $i < strlen($code); $i++) {
             }
             break;
         case '[':
-            if ($array[$current] == 0) {             //если 0 - перейти вперед на ячейку, следующую за ]
+            if (!isset($array[$current]) || $array[$current] == 0) {             //если 0 - перейти вперед на ячейку, следующую за ]
                 $brackets_number = 0;
                 while (true) {
                     if ($code[$i] == '[') {
