@@ -1,74 +1,28 @@
 <?php
 
-use Generator\MyGenerator;
+function include_classes ($class) {
+    require_once $class . ".php";
+}
 
-spl_autoload_register(function ($class) {
-    require_once __DIR__ . "/" . str_replace("\\", "/", $class) . ".php";
-});
+spl_autoload_register("include_classes");
 
 $MyGenerator = new MyGenerator();
 
-try {
-    $MyGenerator->method1();
-} catch (\Exception\Ex1 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex2 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex3 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex4 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex5 $e) {
-    print $e->getMessage();
-} finally {
-    print " on method1." . "\n";
-}
+for ($i = 0; $i < 5; $i++) {
 
-try {
-    $MyGenerator->method2();
-} catch (\Exception\Ex1 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex2 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex3 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex4 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex5 $e) {
-    print $e->getMessage();
-} finally {
-    print " on method2." . "\n";
+    try {
+        $MyGenerator->randomExp();
+    } catch (\Exception\Exp5 $e) {
+        print ( $e->getMessage() . ": " . $e->getCode() . "<br>" );
+    } catch (\Exception\Exp4 $e) {
+        print ( $e->getMessage() . ": " . $e->getCode() . "<br>" );
+    } catch (\Exception\Exp3 $e) {
+        print ( $e->getMessage() . ": " . $e->getCode() . "<br>" );
+    } catch (\Exception\Exp2 $e) {
+        print ( $e->getMessage() . ": " . $e->getCode() . "<br>" );
+    } catch (\Exception\Exp1 $e) {
+        print ( $e->getMessage() . ": " . $e->getCode() . "<br>" );
+    } finally {
+        print "<br>";
+    }
 }
-
-try {
-    $MyGenerator->method3();
-} catch (\Exception\Ex1 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex2 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex3 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex4 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex5 $e) {
-    print $e->getMessage();
-} finally {
-    print " on method3." . "\n";
-}
-
-try {
-    $MyGenerator->method4();
-} catch (\Exception\Ex1 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex2 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex3 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex4 $e) {
-    print $e->getMessage();
-} catch (\Exception\Ex5 $e) {
-    print $e->getMessage();
-} finally {
-    print " on method4." . "\n";
-}
-
