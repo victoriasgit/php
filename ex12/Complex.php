@@ -44,7 +44,7 @@ class Complex
 
         throw new Exception("z1 = " .$this->getreal() ." + " .$this->getimaginary() ."i; 
             z2 = " .$complex->getreal() ." + " .$complex->getimaginary() ."i 
-            (НЕВОЗМОЖНО ДЕЛИТЬ НА 0)");
+            (НЕВОЗМОЖНО ДЕЛИТЬ НА 0)", 4);
     }
     function abs() : float
     {
