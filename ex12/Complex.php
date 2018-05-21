@@ -43,4 +43,19 @@ class Complex
         }
         else print ("Enter the correct value");
     }
+    function abs() : float
+    {
+        $real = sqrt($this->real * $this->real + $this->imaginary * $this->imaginary);
+        return $real;
+    }
+    public function __toString()
+    {
+        $number = $this->real;
+        if ($this->imaginary > 0) {
+            $number .= "+" . $this->imaginary . "i";
+        } elseif ($this->imaginary < 0) {
+            $number .= $this->imaginary . "i";
+        }
+        return $number;
+    }
 }

@@ -1,6 +1,9 @@
 <?php
+
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . './Complex.php';
+
 use PHPUnit\Framework\TestCase;
+
 class Test extends TestCase
 {
     function testAdd()
@@ -30,5 +33,12 @@ class Test extends TestCase
         $complex_number2 = new Complex(3, 4);
         $this->assertEquals(0.44, $complex_number1->div($complex_number2)->getreal());
         $this->assertEquals(0.08, $complex_number1->div($complex_number2)->getimaginary());
+    }
+    function testAbs()
+    {
+        $complex_number1 = new Complex(1, 2);
+        $complex_number2 = new Complex(3, 4);
+        $this->assertEquals(sqrt(5), $complex_number1->abs());
+        $this->assertEquals(5, $complex_number2->abs());
     }
 }
