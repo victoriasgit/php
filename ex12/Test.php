@@ -30,9 +30,10 @@ class Test extends TestCase
     function testDiv()
     {
         $complex_number1 = new Complex(1, 2);
-        $complex_number2 = new Complex(3, 4);
+        $complex_number2 = new Complex(0, 0);
         $this->assertEquals(0.44, $complex_number1->div($complex_number2)->getreal());
-        $this->assertEquals(0.08, $complex_number1->div($complex_number2)->getimaginary());
+        $this->assertEquals(0, $complex_number1->div($complex_number2)->getimaginary());
+
     }
     function testAbs()
     {

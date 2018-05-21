@@ -41,7 +41,10 @@ class Complex
             $imaginary = ($this->imaginary * $complex->getreal() - $this->real * $complex->getimaginary()) / ($complex->getreal() * $complex->getreal() + $complex->getimaginary() * $complex->getimaginary());
             return new Complex($real, $imaginary);
         }
-        else print ("Enter the correct value");
+
+        throw new Exception("z1 = " .$this->getreal() ." + " .$this->getimaginary() ."i; 
+            z2 = " .$complex->getreal() ." + " .$complex->getimaginary() ."i 
+            (НЕВОЗМОЖНО ДЕЛИТЬ НА 0)");
     }
     function abs() : float
     {
